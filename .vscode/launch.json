@@ -6,10 +6,18 @@
     "configurations": [
         {
             "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "Paint_76ae767c",
+            "vmArgs": "--module-path 'D:\\Program Files (x86)\\javafx-sdk-22\\lib' --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}",
-            "vmArgs": "--module-path 'C:\\Program Files\\Java\\javafx-sdk-21.0.2\\lib' --add-modules javafx.controls,javafx.fxml",
+            "vmArgs": "--module-path 'D:\\Program Files (x86)\\javafx-sdk-22\\lib' --add-modules javafx.controls,javafx.fxml"
         },
         {
             "type": "java",
@@ -17,7 +25,7 @@
             "request": "launch",
             "mainClass": "App",
             "projectName": "Paint_c6a128ea",
-            "vmArgs": "--module-path 'C:\\Program Files\\Java\\javafx-sdk-21.0.2\\lib' --add-modules javafx.controls,javafx.fxml",
+            "vmArgs": "--module-path 'D:\\Program Files (x86)\\javafx-sdk-22\\lib' --add-modules javafx.controls,javafx.fxml"
         }
     ]
 }
