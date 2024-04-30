@@ -5,8 +5,11 @@ import javafx.scene.layout.StackPane;
 public class Plansza extends Pane {
     public Plansza(Rysuj r) {
         setPrefSize(600,600);
-        setOnMousePressed(e -> {
-            r.zmienStan();
+        setOnDragDetected(e -> {
+            getChildren().add(r.rysuj(e.getX(), e.getY(), 100));
         });
+        setOnMouseDragged(e -> {
+        });
+        
     }
 }

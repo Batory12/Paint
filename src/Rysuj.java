@@ -1,3 +1,6 @@
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Shape;
+
 public class Rysuj {
     private Figury tryb;
     private boolean czyWypelniony;
@@ -18,5 +21,14 @@ public class Rysuj {
     }
     public void zmienStan() {
         czyAktywny = !czyAktywny;
+    }
+    public Shape rysuj(double x, double y, double r) {
+        return new Circle() {
+            {
+                setCenterX(x);
+                setCenterY(y);
+                setRadius(r);
+            }
+        };
     }
 }
