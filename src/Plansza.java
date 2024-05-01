@@ -7,7 +7,7 @@ import javafx.scene.shape.Shape;
 public class Plansza extends Pane {
     public Plansza(Rysuj r) {
         setMaxSize(800, 600);
-        setOnMouseClicked(e -> {
+        setOnMousePressed(e -> {
             System.out.println("Kliknieto plansze");
             r.ustawPozycje(e.getX(), e.getY());
             r.rysuj(this);

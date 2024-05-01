@@ -19,6 +19,7 @@ public class GUI {
                         setOnAction(new EventHandler<ActionEvent>() {
                             public void handle(ActionEvent e) {
                                 r.ustawTryb(Figury.KOLO);
+                                r.wlacz();
                                 System.out.println("Kliknieto okrag");
                             }
                         });
@@ -29,6 +30,7 @@ public class GUI {
                             setOnAction(new EventHandler<ActionEvent>() {
                                 public void handle(ActionEvent e) {
                                     r.ustawTryb(Figury.PROSTOKAT);
+                                    r.wlacz();
                                     System.out.println("Kliknieto prostokat");
                                 }
                             });
@@ -39,6 +41,7 @@ public class GUI {
                             setOnAction(new EventHandler<ActionEvent>() {
                                 public void handle(ActionEvent e) {
                                     r.ustawTryb(Figury.TROJKAT);
+                                    r.wlacz();
                                     System.out.println("Kliknieto trojkat");
                                 }
                             });

@@ -14,8 +14,11 @@ public class Rysuj {
     public boolean stan() {
         return czyAktywny;
     }
-    public void zmienStan() {
-        czyAktywny = !czyAktywny;
+    public void wlacz() {
+        czyAktywny = true;
+    }
+    public void wylacz() {
+        czyAktywny = false;
     }
     public void ustawPozycje(double x, double y) {
         this.x = x;
@@ -47,6 +50,7 @@ public class Rysuj {
         return new Trojkat(x, y, 200);
     }
     public void rysuj(Plansza plansza) {
+        if(!czyAktywny) return;
         switch (tryb) {
             case KOLO:
                 plansza.getChildren().add(rysujKolo());
@@ -57,6 +61,7 @@ public class Rysuj {
             case TROJKAT:
             plansza.getChildren().add(rysujTrojkat());
         }
+        wylacz();
     }
     
     
