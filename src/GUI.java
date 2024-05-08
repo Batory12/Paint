@@ -49,6 +49,12 @@ public class GUI {
                     });
                 }
             });
+            getMenus().add(new Menu("Edycja") {
+                {
+                    getItems().add(new MenuItem("Włącz edycję"));
+                    getItems().add(new MenuItem("Wyłącz edycję"));
+                }
+            });
             getMenus().add(new Menu("Pomoc") {
                 {
                     getItems().add(new MenuItem("O programie"));
@@ -65,6 +71,7 @@ public class GUI {
         Plansza plansza = new Plansza(r);
         root.setCenter(plansza);
         stage.setScene(new Scene(root, 800, 600));
+        stage.setTitle("Kształty");
         stage.show();
     }
 }

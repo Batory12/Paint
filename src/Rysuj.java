@@ -1,8 +1,4 @@
-import javafx.event.EventHandler;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
+
 
 public class Rysuj {
     private Figury tryb;
@@ -23,45 +19,27 @@ public class Rysuj {
     public void ustawPozycje(double x, double y) {
         this.x = x;
         this.y = y;
-    }
-    private Circle rysujKolo() {
-        System.out.println("Rysuje kolo");
-        return new Circle() {
-            {
-                setCenterX(x);
-                setCenterY(y);
-                setRadius(100);
-            }
-        };
-    }
-    private Rectangle rysujProstokat() {
-        System.out.println("Rysuje prostokat");
-        return new Rectangle() {
-            {
-                setX(x);
-                setY(y);
-                setWidth(100);
-                setHeight(100);
-            }
-        };
-    }
-    private Trojkat rysujTrojkat() {
-        System.out.println("Rysuje trojkat");
-        return new Trojkat(x, y, 200);
-    }
+    }   
     public void rysuj(Plansza plansza) {
         if(!czyAktywny) return;
         switch (tryb) {
             case KOLO:
-                plansza.getChildren().add(rysujKolo());
+                Kolo k = new Kolo(x, y, 50);
+                if(!k.pasuje(plansza)) return;
+                plansza.getChildren().add(k);
                 break;
             case PROSTOKAT:
-            plansza.getChildren().add(rysujProstokat());
+            Prostokat p = new Prostokat(x, y, 100, 100);
+                if(!p.pasuje(plansza)) return;
+            plansza.getChildren().add(p);
                 break;
             case TROJKAT:
-            plansza.getChildren().add(rysujTrojkat());
+            Trojkat t = new Trojkat(x, y, 200);
+                if(!t.pasuje(plansza)) return;
+                plansza.getChildren().add(t);
+                break;
         }
-        wylacz();
+        wylacz();  
     }
     
     
