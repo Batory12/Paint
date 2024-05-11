@@ -109,8 +109,8 @@ class FXRectangleScrollHandler implements EventHandler<ScrollEvent>{
       
         rectangle = (Prostokat) event.getSource();
       if (event.getEventType()==ScrollEvent.SCROLL){
-        //doScale(event);
-        doRotate(event);
+        doScale(event);
+        //doRotate(event);
       }
     }
     private void doRotate(ScrollEvent e) {

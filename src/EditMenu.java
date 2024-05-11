@@ -3,12 +3,12 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 
 public class EditMenu extends ContextMenu {
-    public EditMenu(Rysuj r) {
+    public EditMenu(Figura f) {
         MenuItem m1 = new MenuItem("Przesuń");
-        MenuItem m2 = new MenuItem("Usun");
-        MenuItem m3 = new MenuItem("Zmień kolor");
-        MenuItem m4 = new MenuItem("Zmień rozmiar");
-        MenuItem m5 = new MenuItem("Obróć");
-        getItems().addAll(m1, m2);
+        m1.setOnAction();
+        MenuItem m2 = new MenuItem("Usuń");
+        MenuItem m3 = new MenuItem("Zmień rozmiar");
+        MenuItem m4 = new MenuItem("Obróć");
+        getItems().addAll(m1, m2, m3, m4);
     }
 }

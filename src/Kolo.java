@@ -11,4 +11,5 @@ public class Kolo extends Circle {
     public boolean pasuje(Plansza plansza) {
         return !(x<50 || y<50 || x>plansza.getWidth()-50 || y>plansza.getHeight()-50);
     }
+    
 }
