@@ -6,7 +6,7 @@ import javafx.scene.input.ScrollEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Rotate;
 
-public class Prostokat extends Rectangle {
+public class Prostokat extends Rectangle implements Figura{
     private double x, y, w, h;
     private Rotate rotate = new Rotate();
     public Prostokat(double x, double y, double w, double h) {
