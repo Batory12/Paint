@@ -35,6 +35,7 @@ public class Rysuj {
                 break;
             case TROJKAT:
             Trojkat t = new Trojkat(x, y, 200);
+                if(!t.pasuje(plansza)) return;
                 plansza.getChildren().add(t);
                 break;
         }
