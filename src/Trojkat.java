@@ -1,4 +1,5 @@
 import javafx.scene.shape.Polygon;
+import javafx.scene.transform.Rotate;
 
 public class Trojkat extends Polygon{
     private double bok;
