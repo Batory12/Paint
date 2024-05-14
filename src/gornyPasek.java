@@ -6,7 +6,20 @@ import javafx.scene.control.*;
 class gornyPasek extends MenuBar {
 
     public gornyPasek(Plansza r) {
-        getMenus().add(new Menu("Plik"));
+        getMenus().add(new Menu("Plik") {
+            {
+                getItems().add(new MenuItem("Zapisz")  {
+                    {
+                        setOnAction(new Zapisz(r));
+                    }
+                });
+                getItems().add(new MenuItem("Wczytaj") {
+                    {
+                        setOnAction(new Wczytaj(r));
+                    }
+                });
+            }
+        });
         getMenus().add(new Menu("Rysuj") {
             {
                 getItems().add(new MenuItem("Okrag") {
@@ -36,12 +49,6 @@ class gornyPasek extends MenuBar {
                         });
                     }
                 });
-            }
-        });
-        getMenus().add(new Menu("Edycja") {
-            {
-                getItems().add(new MenuItem("Włącz edycję"));
-                getItems().add(new MenuItem("Wyłącz edycję"));
             }
         });
         getMenus().add(new Menu("Pomoc") {

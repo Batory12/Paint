@@ -6,4 +6,5 @@ public interface Figura {
     public void ustawDolnyRog(double x, double y);
     public void wlaczEdycje();
     public void wylaczEdycje();
+    public void obroc(double kat);
 }

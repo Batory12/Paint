@@ -5,7 +5,6 @@ import javafx.scene.transform.Rotate;
 import javafx.scene.shape.Shape;
 
 public class Prostokat extends Rectangle implements Figura {
-    private Rotate rotate = new Rotate();
     private EditMenu menu;
     public Prostokat() {
       menu = new EditMenu(this);
@@ -55,5 +54,14 @@ public class Prostokat extends Rectangle implements Figura {
       setOnMousePressed(null);
       setOnMouseDragged(null);
       setOnScroll(null);
+    }
+    @Override
+    public void obroc(double kat) {
+      getTransforms().add(new Rotate(kat) {
+        {
+            setPivotX(getX()+getWidth()/2);
+            setPivotY(getY()+getHeight()/2);
+        }
+    });
     }
 }

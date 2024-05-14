@@ -2,6 +2,7 @@ import javafx.event.EventHandler;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Shape;
+import javafx.scene.transform.Rotate;
 
 public class Trojkat extends Polygon implements Figura{
     private double bok;
@@ -73,5 +74,13 @@ public class Trojkat extends Polygon implements Figura{
       setOnMousePressed(null);
       setOnMouseDragged(null);
       setOnScroll(null);
+    }
+    public void obroc(double kat) {
+        getTransforms().add(new Rotate(kat) {
+            {
+                setPivotX((topX+botX)/2);
+                setPivotY((topY+botY)/2);
+            }
+        });
     }
 }

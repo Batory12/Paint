@@ -1,9 +1,7 @@
-import java.io.Serializable;
-
 import javafx.scene.layout.Pane;
 
-public class Plansza extends Pane implements Serializable {
-    private Figura f;
+public class Plansza extends Pane {
+    private Figura f= new Kolo();
     public Plansza() {
         Rysowanie a = new Rysowanie();
         setOnMousePressed(a);
