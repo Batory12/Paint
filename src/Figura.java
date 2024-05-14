@@ -4,4 +4,6 @@ public interface Figura {
     public void przesun(double dx, double dy);
     public void ustawGornyRog(double x, double y);
     public void ustawDolnyRog(double x, double y);
+    public void wlaczEdycje();
+    public void wylaczEdycje();
 }

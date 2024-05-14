@@ -35,8 +35,16 @@ public class Trojkat extends Polygon implements Figura{
     }
     @Override
     public void przesun(double dx, double dy) {
-        setTranslateX(getTranslateX()+dx);
-        setTranslateY(getTranslateY()+dy);
+        botX+=dx;
+        topX+=dx;
+        botY+=dy;
+        topY+=dy;
+        getPoints().clear();
+        getPoints().addAll(new Double[]{
+            botX, botY,
+            topX, botY,
+            (botX+topX)/2, topY
+    });
     }
     @Override
     public void ustawGornyRog(double x, double y) {
@@ -53,5 +61,17 @@ public class Trojkat extends Polygon implements Figura{
             topX, botY,
             (botX+topX)/2, topY
     });
+    }
+    @Override
+    public void wlaczEdycje() {
+        setOnMousePressed(new Przesuwanie());
+        setOnMouseDragged(new Przesuwanie());
+        setOnScroll(new Skalowanie());
+    }
+    @Override
+    public void wylaczEdycje() {
+      setOnMousePressed(null);
+      setOnMouseDragged(null);
+      setOnScroll(null);
     }
 }

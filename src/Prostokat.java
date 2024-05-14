@@ -31,8 +31,8 @@ public class Prostokat extends Rectangle implements Figura {
     }
     @Override
     public void przesun(double dx, double dy) {
-      setTranslateX(getTranslateX()+dx);
-      setTranslateY(getTranslateY()+dy);
+      setX(getX()+dx);
+      setY(getY()+dy);
     }
     @Override
     public void ustawGornyRog(double x, double y) {
@@ -43,5 +43,17 @@ public class Prostokat extends Rectangle implements Figura {
     public void ustawDolnyRog(double x, double y) {
       this.setWidth(x-getX());
       this.setHeight(y-getY());
+    }
+    @Override
+    public void wlaczEdycje() {
+        setOnMousePressed(new Przesuwanie());
+        setOnMouseDragged(new Przesuwanie());
+        setOnScroll(new Skalowanie());
+    }
+    @Override
+    public void wylaczEdycje() {
+      setOnMousePressed(null);
+      setOnMouseDragged(null);
+      setOnScroll(null);
     }
 }

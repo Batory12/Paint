@@ -27,8 +27,8 @@ public class Kolo extends Circle implements Figura {
     }
     @Override
     public void przesun(double dx, double dy) {
-        setTranslateX(getTranslateX()+dx);
-        setTranslateY(getTranslateY()+dy);
+        setCenterX(getCenterX()+dx);
+        setCenterY(getCenterY()+dy);
     }
     @Override
     public void ustawGornyRog(double x, double y) {
@@ -40,6 +40,18 @@ public class Kolo extends Circle implements Figura {
         final double dx = getCenterX()-x;
         final double dy = getCenterY()-y;
         setRadius(Math.sqrt(dx*dx+dy*dy));
+    }
+    @Override
+    public void wlaczEdycje() {
+        setOnMousePressed(new Przesuwanie());
+        setOnMouseDragged(new Przesuwanie());
+        setOnScroll(new Skalowanie());
+    }
+    @Override
+    public void wylaczEdycje() {
+      setOnMousePressed(null);
+      setOnMouseDragged(null);
+      setOnScroll(null);
     }
 
 }
