@@ -1,19 +1,22 @@
+import javafx.event.EventHandler;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.shape.Polygon;
-import javafx.scene.transform.Rotate;
+import javafx.scene.shape.Shape;
 
-public class Trojkat extends Polygon{
+public class Trojkat extends Polygon implements Figura{
     private double bok;
     private double h, x, y;
-    public Trojkat(double x, double y, double bok) {
-        this.bok = bok;
-        this.x = x;
-        this.y=y;
-        h = Math.sqrt(3)/2*bok;
-        getPoints().addAll(new Double[]{
-            x, y,
-            x+bok/2, y+h,
-            x-bok/2, y+h
-        });
+    private double topX, topY, botX, botY;
+    private EditMenu menu;
+    public Trojkat() {
+        setOnScroll(new Skalowanie());
+        menu = new EditMenu(this);
+        setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
+        @Override
+        public void handle(ContextMenuEvent event) {        
+          menu.show((Shape)event.getSource(), event.getScreenX(), event.getScreenY());              
+      }
+      });
     }
     public double wysokosc() {
         return h;
@@ -21,5 +24,34 @@ public class Trojkat extends Polygon{
     public boolean pasuje(Plansza plansza) {
         return !(y+this.wysokosc()>plansza.getHeight()||x+bok/2>plansza.getWidth()||x<bok/2);
     }
-    
+    @Override
+    public boolean zawiera(double x, double y) {
+        return getBoundsInLocal().contains(x,y);
+    }
+    @Override
+    public void skaluj(double d) {
+        setScaleX(getScaleX()+d/100);
+        setScaleY(getScaleY()+d/100);
+    }
+    @Override
+    public void przesun(double dx, double dy) {
+        setTranslateX(getTranslateX()+dx);
+        setTranslateY(getTranslateY()+dy);
+    }
+    @Override
+    public void ustawGornyRog(double x, double y) {
+      topX=x;
+      topY=y;
+    }
+    @Override
+    public void ustawDolnyRog(double x, double y) {
+        botX=x;
+        botY=y;
+        getPoints().clear();
+        getPoints().addAll(new Double[]{
+            botX, botY,
+            topX, botY,
+            (botX+topX)/2, topY
+    });
+    }
 }

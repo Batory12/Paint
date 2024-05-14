@@ -1,15 +1,45 @@
+import javafx.event.EventHandler;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.shape.Circle;
-
-public class Kolo extends Circle {
-    double x, y, r;
-    public Kolo(double x, double y, double r) {
-        super(x, y, r);
-        this.x = x;
-        this.y = y;
-        this.r = r;
+import javafx.scene.shape.Shape;
+public class Kolo extends Circle implements Figura {
+    private EditMenu menu;
+    public Kolo() {
+        menu = new EditMenu(this);
+        setOnScroll(new Skalowanie());
+        setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
+        @Override
+        public void handle(ContextMenuEvent event) {        
+          menu.show((Shape)event.getSource(), event.getScreenX(), event.getScreenY());              
+      }
+      });
     }
     public boolean pasuje(Plansza plansza) {
-        return !(x<50 || y<50 || x>plansza.getWidth()-50 || y>plansza.getHeight()-50);
+        return !(getCenterX()<50 || getCenterY()<50 || getCenterX()>plansza.getWidth()-50 || getCenterY()>plansza.getHeight()-50);
     }
-    
+    @Override
+    public void skaluj(double d) {
+        setRadius(getRadius()+d/5);
+    }
+    @Override
+    public boolean zawiera(double x, double y) {
+      return getBoundsInLocal().contains(x,y); 
+    }
+    @Override
+    public void przesun(double dx, double dy) {
+        setTranslateX(getTranslateX()+dx);
+        setTranslateY(getTranslateY()+dy);
+    }
+    @Override
+    public void ustawGornyRog(double x, double y) {
+        setCenterX(x);
+        setCenterY(y);
+    }
+    @Override
+    public void ustawDolnyRog(double x, double y) {
+        final double dx = getCenterX()-x;
+        final double dy = getCenterY()-y;
+        setRadius(Math.sqrt(dx*dx+dy*dy));
+    }
+
 }

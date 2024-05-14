@@ -1,16 +1,13 @@
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 public class GUI {
     private class gornyPasek extends MenuBar {
 
-        public gornyPasek(Rysuj r) {
+        public gornyPasek(Plansza r) {
             getMenus().add(new Menu("Plik"));
             getMenus().add(new Menu("Rysuj") {
                 {
@@ -18,9 +15,7 @@ public class GUI {
                         {
                         setOnAction(new EventHandler<ActionEvent>() {
                             public void handle(ActionEvent e) {
-                                r.ustawTryb(Figury.KOLO);
-                                r.wlacz();
-                                System.out.println("Kliknieto okrag");
+                                r.rysuj(new Kolo());
                             }
                         });
                         }
@@ -29,9 +24,7 @@ public class GUI {
                         {
                             setOnAction(new EventHandler<ActionEvent>() {
                                 public void handle(ActionEvent e) {
-                                    r.ustawTryb(Figury.PROSTOKAT);
-                                    r.wlacz();
-                                    System.out.println("Kliknieto prostokat");
+                                    r.rysuj(new Prostokat());
                                 }
                             });
                         }
@@ -40,9 +33,7 @@ public class GUI {
                         {
                             setOnAction(new EventHandler<ActionEvent>() {
                                 public void handle(ActionEvent e) {
-                                    r.ustawTryb(Figury.TROJKAT);
-                                    r.wlacz();
-                                    System.out.println("Kliknieto trojkat");
+                                    r.rysuj(new Trojkat());
                                 }
                             });
                         }
@@ -65,10 +56,9 @@ public class GUI {
         }
     }
     public GUI(Stage stage) {
-        Rysuj r = new Rysuj();
         BorderPane root = new BorderPane();
-        root.setTop(new gornyPasek(r));
-        Plansza plansza = new Plansza(r);
+        Plansza plansza = new Plansza();
+        root.setTop(new gornyPasek(plansza));
         root.setCenter(plansza);
         stage.setScene(new Scene(root, 800, 600));
         stage.setTitle("Kształty");

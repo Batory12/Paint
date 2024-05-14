@@ -1,125 +1,47 @@
 import javafx.event.EventHandler;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.input.ScrollEvent;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Rotate;
+import javafx.scene.shape.Shape;
 
-public class Prostokat extends Rectangle {
-    private double x, y, w, h;
+public class Prostokat extends Rectangle implements Figura {
     private Rotate rotate = new Rotate();
-    public Prostokat(double x, double y, double w, double h) {
-        super(x, y, w, h);
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
-        setOnMousePressed(new FXRectangleEventHandler());
-        setOnMouseDragged(new FXRectangleEventHandler());
-        setOnScroll(new FXRectangleScrollHandler());
-        getTransforms().add(rotate);
+    private EditMenu menu;
+    public Prostokat() {
+      menu = new EditMenu(this);
+      setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
+        @Override
+        public void handle(ContextMenuEvent event) {        
+          menu.show((Shape)event.getSource(), event.getScreenX(), event.getScreenY());              
+      }
+      });
     }
     public boolean pasuje(Plansza plansza) {
-        return !(x<50 || y<50 || x+w>plansza.getWidth()-50 || y+h>plansza.getHeight()-50);
+      return plansza.getBoundsInLocal().contains(getX(), getY()) && plansza.getBoundsInLocal().contains(getX()+getWidth(), getY()+getHeight());
+        //!(getX()<50 || getY()<50 || getX()+getWidth()>plansza.getWidth()-50 || getY()+getHeight()>plansza.getHeight()-50);
     }
-    // Metoda sprawdza czy najechalismy na figure
-    public boolean isHit(double x, double y) { 
-        return getBoundsInLocal().contains(x,y);   
-    }
-
-    // Zmiana wspolrzednej x prostakata
-    public void addX(double x) {  
-        setX(getX()+x);
-    }
-
-    // Zmiana wspolrzednej y prostakata
-    public void addY(double y) {  
-        setY(getY()+y);
-    }
-    
-    // Zmiana szerokosci prostokata
-    public void addWidth(double w) {
-        setWidth(getWidth()+w);
-    }
-    
-    // Zmiana wysokosci prostokata
-    public void addHeight(double h) {     
-        setHeight(getHeight()+h);
-    }
-
-
-    // Implementacja przesuwania
-  class FXRectangleEventHandler implements EventHandler<MouseEvent>{
-    
-    Prostokat rectangle;
-    private double x;
-    private double y;
-  
-    private void doMove(MouseEvent event) {
-              
-      double dx = event.getX() - x;
-      double dy = event.getY() - y;
-  
-        // Jesli nacisnelismy na prostokat
-       if (rectangle.isHit(x, y)) {
-            rectangle.addX(dx);
-            rectangle.addY(dy);
-        }
-      x += dx;
-      y += dy;            
-    }
-  
-  
     @Override
-    public void handle(MouseEvent event) {
-  
-     rectangle = (Prostokat) event.getSource();
-     if (event.getEventType()==MouseEvent.MOUSE_CLICKED){
-        x = event.getX();
-        y = event.getY();
-      }
-      if (event.getEventType()==MouseEvent.MOUSE_DRAGGED){
-        doMove(event);
-      }
-  
+    public void skaluj(double d) {
+        setWidth(getWidth()+d);
+        setHeight(getHeight()+d);
     }
-  }
-
-  // Implementacja scrollowania   
-class FXRectangleScrollHandler implements EventHandler<ScrollEvent>{
-
-    Prostokat rectangle;
-
-    private void doScale(ScrollEvent e) {
-              
-    double x = e.getX();
-    double y = e.getY();
-  
-    // Jesli nacisnelismy na elipse
-    if (rectangle.isHit(x, y)) {                 
-            rectangle.addWidth(e.getDeltaY()*0.2);
-            rectangle.addHeight(e.getDeltaY()*0.2);
-
-        }
-    }            
-  
     @Override
-    public void handle(ScrollEvent event) {
-      
-        rectangle = (Prostokat) event.getSource();
-      if (event.getEventType()==ScrollEvent.SCROLL){
-        doScale(event);
-        //doRotate(event);
-      }
+    public boolean zawiera(double x, double y) {
+      return getBoundsInLocal().contains(x,y); 
     }
-    private void doRotate(ScrollEvent e) {
-        if (rectangle.isHit(e.getX(), e.getY())) {
-            rotate.setPivotX(x+w/2);     
-            rotate.setPivotY(y+h/2);            
-            rotate.setAngle(rotate.getAngle()+e.getDeltaY()*0.2);
-        }
-    }           
-      
-  }
+    @Override
+    public void przesun(double dx, double dy) {
+      setTranslateX(getTranslateX()+dx);
+      setTranslateY(getTranslateY()+dy);
+    }
+    @Override
+    public void ustawGornyRog(double x, double y) {
+      this.setX(x);
+      this.setY(y);
+    }
+    @Override
+    public void ustawDolnyRog(double x, double y) {
+      this.setWidth(x-getX());
+      this.setHeight(y-getY());
+    }
 }
