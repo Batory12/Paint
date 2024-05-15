@@ -1,10 +1,12 @@
 import java.io.Serializable;
-
 public class SFigura implements Serializable {
     char typ;
-    double x, y, w, h, r, botX, botY;
+    double x, y, w, h, r, botX, botY, red, green, blue;
     double[] points;
     public SFigura(Figura f) {
+        red = f.kolor().getRed();
+        green = f.kolor().getGreen();
+        blue = f.kolor().getBlue();
         if(f instanceof Kolo) {
             typ = 'K';
             x = ((Kolo)f).getCenterX();

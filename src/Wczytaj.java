@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 
 public class Wczytaj implements EventHandler<ActionEvent> {
@@ -30,11 +31,11 @@ public class Wczytaj implements EventHandler<ActionEvent> {
     private Shape stworzFigure(SFigura f) {
         switch (f.typ) {
             case 'K':
-                return new Kolo(f.x, f.y, f.r);
+                return new Kolo(f.x, f.y, f.r, Color.color(f.red, f.green, f.blue));
             case 'P':
-                return new Prostokat(f.x, f.y, f.w, f.h);
+                return new Prostokat(f.x, f.y, f.w, f.h, Color.color(f.red, f.green, f.blue));
             case 'T':
-                return new Trojkat(f.x, f.y, f.botX, f.botY);
+                return new Trojkat(f.x, f.y, f.botX, f.botY, Color.color(f.red, f.green, f.blue));
         }
         return null;
     }

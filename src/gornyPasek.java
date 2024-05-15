@@ -1,6 +1,4 @@
 import javafx.event.ActionEvent;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
 import javafx.event.EventHandler;
 import javafx.scene.control.*;
 class gornyPasek extends MenuBar {

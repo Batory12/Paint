@@ -1,3 +1,5 @@
+import javafx.scene.paint.Color;
+
 public interface Figura {
     public boolean zawiera(double x, double y);
     public void skaluj(double d);
@@ -7,4 +9,5 @@ public interface Figura {
     public void wlaczEdycje();
     public void wylaczEdycje();
     public void obroc(double kat);
+    public Color kolor();
 }

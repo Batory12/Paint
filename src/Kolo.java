@@ -1,5 +1,6 @@
 import javafx.event.EventHandler;
 import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
 public class Kolo extends Circle implements Figura {
@@ -14,8 +15,9 @@ public class Kolo extends Circle implements Figura {
       }
       });
     }
-    public Kolo(double x, double y, double r) {
+    public Kolo(double x, double y, double r, Color kolor) {
         super(x,y,r);
+        setFill(kolor);
         menu = new EditMenu(this);
         setOnScroll(new Skalowanie());
         setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
@@ -67,6 +69,10 @@ public class Kolo extends Circle implements Figura {
     @Override
     public void obroc(double kat) {
         setRotate(getRotate()+kat);
+    }
+     @Override
+    public Color kolor() {
+        return (Color)getFill();
     }
 
 }

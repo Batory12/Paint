@@ -2,10 +2,11 @@ import java.io.Serializable;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Shape;
 
-public class Trojkat extends Polygon implements Figura, Serializable{
+public class Trojkat extends Polygon implements Figura {
     private double topX, topY, botX, botY;
     private EditMenu menu;
     public Trojkat() {
@@ -18,7 +19,8 @@ public class Trojkat extends Polygon implements Figura, Serializable{
       }
       });
     }
-    public Trojkat(double x, double y, double botX, double botY) {
+    public Trojkat(double x, double y, double botX, double botY, Color kolor) {
+        setFill(kolor);
         ustawGornyRog(x,y);
         ustawDolnyRog(botX, botY);
         setOnScroll(new Skalowanie());
@@ -96,4 +98,9 @@ public class Trojkat extends Polygon implements Figura, Serializable{
     public double getBotY() {
         return botY;
     }
+    @Override
+    public Color kolor() {
+        return (Color)getFill();
+    }
+    
 }

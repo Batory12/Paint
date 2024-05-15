@@ -1,5 +1,6 @@
 import javafx.event.EventHandler;
 import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
@@ -15,8 +16,9 @@ public class Prostokat extends Rectangle implements Figura {
       }
       });
     }
-    public Prostokat(double x, double y, double w, double h) {  
+    public Prostokat(double x, double y, double w, double h, Color kolor) {  
       super(x,y,w,h);
+      setFill(kolor);
       menu = new EditMenu(this);
       setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
         @Override
@@ -69,4 +71,8 @@ public class Prostokat extends Rectangle implements Figura {
     public void obroc(double kat) {
       setRotate(getRotate()+kat);
   }
+   @Override
+    public Color kolor() {
+        return (Color)getFill();
+    }
 }
