@@ -5,14 +5,14 @@ import javafx.application.Application;
 public class App extends Application {
     /**
      * Metoda main
-     * @param args
+     * @param args argumenty niepotrzebne
      */
     public static void main(String[] args) {
         launch(args);
     }
     /**
      * Metoda start
-     * @param stage
+     * @param stage okno aplikacji
      */
     @Override
     public void start(Stage stage) {

@@ -7,6 +7,10 @@ import javafx.stage.Stage;
  * @see gornyPasek
  */
 public class GUI {
+    /**
+     * Konstruktor klasy GUI
+     * @param stage okno aplikacji
+     */
     public GUI(Stage stage) {
         BorderPane root = new BorderPane();
         Plansza plansza = new Plansza();

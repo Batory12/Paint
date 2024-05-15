@@ -143,15 +143,31 @@ public class Trojkat extends Polygon implements Figura {
     public void obroc(double kat) {
         setRotate(getRotate()+kat);
     }
+    /**
+     * Zwraca pole topX
+     * @return topX pole topX
+     */
     public double getTopX() {
         return topX;
     }  
+    /**
+     * Zwraca pole topY
+     * @return topY pole topY
+     */
     public double getTopY() {
         return topY;
     }
+    /**
+     * Zwraca pole botX
+     * @return botX pole botX
+     */
     public double getBotX() {
         return botX;
     }
+    /**
+     * Zwraca pole botY
+     * @return botY pole botY
+     */
     public double getBotY() {
         return botY;
     }
