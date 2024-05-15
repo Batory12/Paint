@@ -1,7 +1,9 @@
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Shape;
-
+/**
+ * Obsługa zdarzenia rysowania figury
+ */
 public class Rysowanie implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent e) {

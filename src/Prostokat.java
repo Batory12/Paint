@@ -3,10 +3,26 @@ import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
-
+/**
+ * Klasa Prostokat
+ * Rozszerza klasę Rectangle na potrzeby aplikacji
+ * Implementuje interfejs Figura
+ * @see Figura
+ */
 public class Prostokat extends Rectangle implements Figura {
   //TODO: Rysowanie do góry
+    /**
+     * Pole menu
+     * Przechowuje menu kontekstowe dla figury
+     * @see EditMenu
+     */
     private EditMenu menu;
+    /**
+     * Bezargumentowy konstruktor klasy Prostokat
+     * Tworzy prostokąt o wymiarach 0x0 i kolorze czarnym
+     * @see Rysowanie
+     * @see Plansza
+     */
     public Prostokat() {
       menu = new EditMenu(this);
       setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
@@ -16,6 +32,18 @@ public class Prostokat extends Rectangle implements Figura {
       }
       });
     }
+    /**
+     * Konstruktor klasy Prostokat
+     * Tworzy prostokąt o podanych parametrach
+     * @param x współrzędna x lewego górnego rogu prostokąta
+     * @param y współrzędna y lewego górnego rogu prostokąta
+     * @param w szerokość prostokąta
+     * @param h wysokość prostokąta
+     * @param kolor kolor prostokąta
+     * @see Plansza
+     * @see Zapisz
+     * @see SFigura
+     */
     public Prostokat(double x, double y, double w, double h, Color kolor) {  
       super(x,y,w,h);
       setFill(kolor);
@@ -26,10 +54,6 @@ public class Prostokat extends Rectangle implements Figura {
           menu.show((Shape)event.getSource(), event.getScreenX(), event.getScreenY());              
       }
       });
-    }
-    public boolean pasuje(Plansza plansza) {
-      return plansza.getBoundsInLocal().contains(getX(), getY()) && plansza.getBoundsInLocal().contains(getX()+getWidth(), getY()+getHeight());
-        //!(getX()<50 || getY()<50 || getX()+getWidth()>plansza.getWidth()-50 || getY()+getHeight()>plansza.getHeight()-50);
     }
     @Override
     public void skaluj(double d) {

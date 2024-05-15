@@ -1,0 +1,4 @@
+Program pozwala na rysowanie i edycję kształtów oraz zapis/wczytywanie do/z pliku.
+zapis/wczytywanie: Plik -> zapisz/wczytaj.
+Rysowanie: rysuj, wybieramy figurę, przeciągamy myszą.
+Edycja pod prawym przyciskiem myszy po najechaniu na figurę.

@@ -1,8 +1,37 @@
 import java.io.Serializable;
+/**
+ * Klasa SFigura
+ * Zawiera w sobie informacje o figurze, które są potrzebne do zapisu
+ * @see Zapisz
+ * @see Figura
+ */
 public class SFigura implements Serializable {
+    /**
+     * Typ figury:
+     * K - kolo
+     * P - prostokat
+     * T - trojkat
+     * @see Kolo
+     * @see Prostokat
+     * @see Trojkat
+     */
     char typ;
+    /**
+     * Własności figury:
+     * Kolo: x, y, r
+     * Prostokat: x, y, w, h
+     * Trojkat: x, y, botX, botY
+     * @see Kolo
+     * @see Prostokat
+     * @see Trojkat
+     */
     double x, y, w, h, r, botX, botY, red, green, blue;
-    double[] points;
+    /**
+     * Konstruktor klasy SFigura
+     * Tworzy obiekt klasy SFigura na podstawie obiektu klasy Figura
+     * @param f figura, na podstawie której tworzony jest obiekt klasy SFigura
+     * @see Figura
+     */
     public SFigura(Figura f) {
         red = f.kolor().getRed();
         green = f.kolor().getGreen();

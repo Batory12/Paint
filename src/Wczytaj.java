@@ -6,10 +6,23 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
-
+/**
+ * Klasa obsługująca wczytywanie stanu planszy z pliku
+ * @see Zapisz
+ */
 public class Wczytaj implements EventHandler<ActionEvent> {
+    /**
+     * Plansza do której wczytujemy stan
+     */
     Plansza p;
+    /**
+     * Lista figur do wczytania
+     */
     ArrayList<SFigura> figury;
+    /**
+     * Konstruktor klasy Wczytaj
+     * @param p plansza do której wczytujemy stan
+     */
     public Wczytaj(Plansza p) {
         this.p=p;
     }
@@ -28,6 +41,14 @@ public class Wczytaj implements EventHandler<ActionEvent> {
             System.err.println(e.getMessage());
         }
     }
+    /**
+     * Metoda stworzFigure
+     * Tworzy figurę na podstawie obiektu klasy SFigura
+     * @param f obiekt klasy SFigura
+     * @return figura
+     * @see SFigura
+     * @see Figura
+     */
     private Shape stworzFigure(SFigura f) {
         switch (f.typ) {
             case 'K':

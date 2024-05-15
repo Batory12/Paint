@@ -1,11 +1,29 @@
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
+/**
+ * Obsługa zdarzenia przesuwania figury
+ * @see Figura
+ * @see Plansza
+ */
 public class Przesuwanie implements EventHandler<MouseEvent> {
-    Figura f;
+    /**
+     * Aktualnie przesuwana figura
+     */
+    private Figura f;
+    /**
+     * Współrzędna x punktu początkowego przesuwania
+     */
     private double x;
+    /**
+     * Współrzędna y punktu początkowego przesuwania
+     */
     private double y;
-  
+    /**
+     * Metoda doMove
+     * Przesuwa figurę
+     * @param event zdarzenie przesunięcia
+     */
     private void doMove(MouseEvent event) {
               
       double dx = event.getX() - x;

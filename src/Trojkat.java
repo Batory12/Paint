@@ -1,14 +1,59 @@
-import java.io.Serializable;
-
 import javafx.event.EventHandler;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Shape;
-
+/**
+ * Klasa Trojkat
+ * Rozszerza klasę Polygon na potrzeby aplikacji
+ * Implementuje interfejs Figura
+ * @see Figura
+ */
 public class Trojkat extends Polygon implements Figura {
-    private double topX, topY, botX, botY;
+    /**
+     * Pole topX
+     * wykorzystywane przy rysowaniu trójkąta
+     * @see Rysowanie
+     * @see ustawGornyRog
+     * @see ustawDolnyRog
+     */
+    private double topX;
+     /**
+     * Pole topY
+     * wykorzystywane przy rysowaniu trójkąta
+     * @see Rysowanie
+     * @see ustawGornyRog
+     * @see ustawDolnyRog
+     */
+    private double  topY;
+     /**
+     * Pole botX
+     * wykorzystywane przy rysowaniu trójkąta
+     * @see Rysowanie
+     * @see ustawGornyRog
+     * @see ustawDolnyRog
+     */
+    private double botX;
+     /**
+     * Pole botY
+     * wykorzystywane przy rysowaniu trójkąta
+     * @see Rysowanie
+     * @see ustawGornyRog
+     * @see ustawDolnyRog
+     */
+    private double botY;
+    /**
+     * Pole menu
+     * Przechowuje menu kontekstowe dla figury
+     * @see EditMenu
+     */
     private EditMenu menu;
+    /**
+     * Bezargumentowy konstruktor klasy Trojkat
+     * Tworzy trójkąt o wierzchołkach o boku 0 i kolorze czarnym
+     * @see Rysowanie
+     * @see Plansza
+     */
     public Trojkat() {
         setOnScroll(new Skalowanie());
         menu = new EditMenu(this);
@@ -19,6 +64,18 @@ public class Trojkat extends Polygon implements Figura {
       }
       });
     }
+    /**
+     * Konstruktor klasy Trojkat
+     * Tworzy trójkąt o podanych parametrach
+     * @param x pole x
+     * @param y pole y
+     * @param botX pole botX
+     * @param botY pole botY
+     * @param kolor kolor trójkąta
+     * @see Plansza
+     * @see Zapisz
+     * @see SFigura
+     */
     public Trojkat(double x, double y, double botX, double botY, Color kolor) {
         setFill(kolor);
         ustawGornyRog(x,y);

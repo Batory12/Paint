@@ -4,10 +4,23 @@ import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
-
+/**
+ * Klasa obsługująca zapisywanie stanu planszy do pliku
+ */
 public class Zapisz implements EventHandler<ActionEvent> {
+    /**
+     * Plansza do zapisania
+     */
     private Plansza p;
+    /**
+     * Lista własności figur do zapisania
+     * @see SFigura
+     */
     private ArrayList<SFigura> figury;
+    /**
+     * Konstruktor klasy Zapisz
+     * @param p plansza do zapisania
+     */
     public Zapisz(Plansza p) {
         this.p=p;
     }
@@ -23,6 +36,12 @@ public class Zapisz implements EventHandler<ActionEvent> {
             ex.printStackTrace();
         }
     }
+    /**
+     * Metoda zapiszStanPlanszy
+     * Zapisuje stan planszy do listy figury
+     * @see SFigura
+     * @see Figura
+     */
     private void zapiszStanPlanszy() {
         figury = new ArrayList<SFigura>();
         for(Node f : p.getChildren()) {
