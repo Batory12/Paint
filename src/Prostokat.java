@@ -1,12 +1,22 @@
 import javafx.event.EventHandler;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.transform.Rotate;
 import javafx.scene.shape.Shape;
 
 public class Prostokat extends Rectangle implements Figura {
+  //TODO: Rysowanie do góry
     private EditMenu menu;
     public Prostokat() {
+      menu = new EditMenu(this);
+      setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
+        @Override
+        public void handle(ContextMenuEvent event) {        
+          menu.show((Shape)event.getSource(), event.getScreenX(), event.getScreenY());              
+      }
+      });
+    }
+    public Prostokat(double x, double y, double w, double h) {  
+      super(x,y,w,h);
       menu = new EditMenu(this);
       setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
         @Override
@@ -57,11 +67,6 @@ public class Prostokat extends Rectangle implements Figura {
     }
     @Override
     public void obroc(double kat) {
-      getTransforms().add(new Rotate(kat) {
-        {
-            setPivotX(getX()+getWidth()/2);
-            setPivotY(getY()+getHeight()/2);
-        }
-    });
-    }
+      setRotate(getRotate()+kat);
+  }
 }

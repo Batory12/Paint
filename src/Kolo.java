@@ -2,10 +2,20 @@ import javafx.event.EventHandler;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
-import javafx.scene.transform.Rotate;
 public class Kolo extends Circle implements Figura {
     private EditMenu menu;
     public Kolo() {
+        menu = new EditMenu(this);
+        setOnScroll(new Skalowanie());
+        setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
+        @Override
+        public void handle(ContextMenuEvent event) {        
+          menu.show((Shape)event.getSource(), event.getScreenX(), event.getScreenY());              
+      }
+      });
+    }
+    public Kolo(double x, double y, double r) {
+        super(x,y,r);
         menu = new EditMenu(this);
         setOnScroll(new Skalowanie());
         setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
@@ -54,13 +64,9 @@ public class Kolo extends Circle implements Figura {
       setOnMouseDragged(null);
       setOnScroll(null);
     }
+    @Override
     public void obroc(double kat) {
-        getTransforms().add(new Rotate(kat) {
-            {
-                setPivotX(getCenterX());
-                setPivotY(getCenterY());
-            }
-        });
+        setRotate(getRotate()+kat);
     }
 
 }

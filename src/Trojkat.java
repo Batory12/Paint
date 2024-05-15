@@ -1,12 +1,11 @@
+import java.io.Serializable;
+
 import javafx.event.EventHandler;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Shape;
-import javafx.scene.transform.Rotate;
 
-public class Trojkat extends Polygon implements Figura{
-    private double bok;
-    private double h, x, y;
+public class Trojkat extends Polygon implements Figura, Serializable{
     private double topX, topY, botX, botY;
     private EditMenu menu;
     public Trojkat() {
@@ -19,11 +18,17 @@ public class Trojkat extends Polygon implements Figura{
       }
       });
     }
-    public double wysokosc() {
-        return h;
-    }
-    public boolean pasuje(Plansza plansza) {
-        return !(y+this.wysokosc()>plansza.getHeight()||x+bok/2>plansza.getWidth()||x<bok/2);
+    public Trojkat(double x, double y, double botX, double botY) {
+        ustawGornyRog(x,y);
+        ustawDolnyRog(botX, botY);
+        setOnScroll(new Skalowanie());
+        menu = new EditMenu(this);
+        setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
+        @Override
+        public void handle(ContextMenuEvent event) {        
+          menu.show((Shape)event.getSource(), event.getScreenX(), event.getScreenY());              
+      }
+      });
     }
     @Override
     public boolean zawiera(double x, double y) {
@@ -75,12 +80,20 @@ public class Trojkat extends Polygon implements Figura{
       setOnMouseDragged(null);
       setOnScroll(null);
     }
+    @Override
     public void obroc(double kat) {
-        getTransforms().add(new Rotate(kat) {
-            {
-                setPivotX((topX+botX)/2);
-                setPivotY((topY+botY)/2);
-            }
-        });
+        setRotate(getRotate()+kat);
+    }
+    public double getTopX() {
+        return topX;
+    }  
+    public double getTopY() {
+        return topY;
+    }
+    public double getBotX() {
+        return botX;
+    }
+    public double getBotY() {
+        return botY;
     }
 }

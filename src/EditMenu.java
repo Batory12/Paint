@@ -2,9 +2,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.ContextMenu;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputDialog;
 
 public class EditMenu extends ContextMenu {
@@ -43,5 +41,6 @@ public class EditMenu extends ContextMenu {
             }
         });
         getItems().addAll(m1, m2, m3);
+
     }
 }
