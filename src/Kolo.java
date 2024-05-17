@@ -39,13 +39,15 @@ public class Kolo extends Circle implements Figura {
      * @param y współrzędna y środka koła
      * @param r promień koła
      * @param kolor kolor koła
+     * @param kat kąt obrotu
      * @see Plansza
      * @see Zapisz
      * @see SFigura
      */
-    public Kolo(double x, double y, double r, Color kolor) {
+    public Kolo(double x, double y, double r, Color kolor, double kat) {
         super(x,y,r);
         setFill(kolor);
+        setRotate(kat);
         menu = new EditMenu(this);
         setOnScroll(new Skalowanie());
         setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {

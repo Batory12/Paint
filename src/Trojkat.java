@@ -72,14 +72,16 @@ public class Trojkat extends Polygon implements Figura {
      * @param botX pole botX
      * @param botY pole botY
      * @param kolor kolor trójkąta
+     * @param kat kąt obrotu
      * @see Plansza
      * @see Zapisz
      * @see SFigura
      */
-    public Trojkat(double x, double y, double botX, double botY, Color kolor) {
+    public Trojkat(double x, double y, double botX, double botY, Color kolor, double kat) {
         setFill(kolor);
         ustawGornyRog(x,y);
         ustawDolnyRog(botX, botY);
+        setRotate(kat);
         setOnScroll(new Skalowanie());
         menu = new EditMenu(this);
         setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {

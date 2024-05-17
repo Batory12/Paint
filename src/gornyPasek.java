@@ -1,5 +1,4 @@
 import java.io.File;
-import java.io.Reader;
 import java.util.Scanner;
 
 import javafx.event.ActionEvent;

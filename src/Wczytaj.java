@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
@@ -38,6 +37,7 @@ public class Wczytaj implements EventHandler<ActionEvent> {
             for(SFigura f : figury) {
                 p.getChildren().add(stworzFigure(f));
             }
+            in.close();
 
             
         } catch (Exception e) {
@@ -56,11 +56,11 @@ public class Wczytaj implements EventHandler<ActionEvent> {
     private Shape stworzFigure(SFigura f) {
         switch (f.typ) {
             case 'K':
-                return new Kolo(f.x, f.y, f.r, Color.color(f.red, f.green, f.blue));
+                return new Kolo(f.x, f.y, f.r, Color.color(f.red, f.green, f.blue), f.kat);
             case 'P':
-                return new Prostokat(f.x, f.y, f.w, f.h, Color.color(f.red, f.green, f.blue));
+                return new Prostokat(f.x, f.y, f.w, f.h, Color.color(f.red, f.green, f.blue), f.kat);
             case 'T':
-                return new Trojkat(f.x, f.y, f.botX, f.botY, Color.color(f.red, f.green, f.blue));
+                return new Trojkat(f.x, f.y, f.botX, f.botY, Color.color(f.red, f.green, f.blue), f.kat);
         }
         return null;
     }

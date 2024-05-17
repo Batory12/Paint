@@ -15,6 +15,14 @@ public class Prostokat extends Rectangle implements Figura {
      * Przechowuje menu kontekstowe dla figury
      * @see EditMenu
      */
+    /*
+     * Pole pomocnicze przy rysowaniu
+     */
+    private double topX;
+    /*
+     * Pole pomocnicze przy rysowaniu
+     */
+    private double  topY;
     private EditMenu menu;
     /**
      * Bezargumentowy konstruktor klasy Prostokat
@@ -39,13 +47,15 @@ public class Prostokat extends Rectangle implements Figura {
      * @param w szerokość prostokąta
      * @param h wysokość prostokąta
      * @param kolor kolor prostokąta
+     * @param kat kąt obrotu
      * @see Plansza
      * @see Zapisz
      * @see SFigura
      */
-    public Prostokat(double x, double y, double w, double h, Color kolor) {  
+    public Prostokat(double x, double y, double w, double h, Color kolor, double kat) {  
       super(x,y,w,h);
       setFill(kolor);
+      setRotate(kat);
       menu = new EditMenu(this);
       setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
         @Override
@@ -70,13 +80,21 @@ public class Prostokat extends Rectangle implements Figura {
     }
     @Override
     public void ustawGornyRog(double x, double y) {
+      topX = x;
+      topY = y;
       this.setX(x);
       this.setY(y);
     }
     @Override
     public void ustawDolnyRog(double x, double y) {
-      this.setWidth(x-getX());
-      this.setHeight(y-getY());
+      this.setWidth(Math.abs(topX-x));
+      this.setHeight(Math.abs(topY-y));
+      if(x<topX) {
+        this.setX(x);
+      }
+      if(y<topY) {
+        this.setY(y);
+      }
     }
     @Override
     public void wlaczEdycje() {

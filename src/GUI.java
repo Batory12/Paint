@@ -14,8 +14,8 @@ public class GUI {
     public GUI(Stage stage) {
         BorderPane root = new BorderPane();
         Plansza plansza = new Plansza();
-        root.setTop(new gornyPasek(plansza));
         root.setCenter(plansza);
+        root.setTop(new gornyPasek(plansza));
         stage.setScene(new Scene(root, 800, 600));
         stage.setTitle("Paint");
         stage.show();

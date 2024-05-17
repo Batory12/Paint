@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import javafx.scene.shape.Shape;
 /**
  * Klasa SFigura
  * Zawiera w sobie informacje o figurze, które są potrzebne do zapisu
@@ -25,7 +26,7 @@ public class SFigura implements Serializable {
      * @see Prostokat
      * @see Trojkat
      */
-    double x, y, w, h, r, botX, botY, red, green, blue;
+    double x, y, w, h, r, kat, botX, botY, red, green, blue;
     /**
      * Konstruktor klasy SFigura
      * Tworzy obiekt klasy SFigura na podstawie obiektu klasy Figura
@@ -36,6 +37,7 @@ public class SFigura implements Serializable {
         red = f.kolor().getRed();
         green = f.kolor().getGreen();
         blue = f.kolor().getBlue();
+        kat = ((Shape)f).getRotate();
         if(f instanceof Kolo) {
             typ = 'K';
             x = ((Kolo)f).getCenterX();
