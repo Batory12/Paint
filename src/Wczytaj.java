@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 /**
@@ -38,7 +41,8 @@ public class Wczytaj implements EventHandler<ActionEvent> {
 
             
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            Alert a = new Alert(AlertType.ERROR, "Błąd wczytywania");
+            a.show();
         }
     }
     /**
