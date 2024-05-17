@@ -10,7 +10,6 @@ import javafx.scene.shape.Shape;
  * @see Figura
  */
 public class Prostokat extends Rectangle implements Figura {
-  //TODO: Rysowanie do góry
     /**
      * Pole menu
      * Przechowuje menu kontekstowe dla figury
